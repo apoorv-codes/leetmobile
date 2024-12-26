@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1003F53B2CB68A2900F0818D /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 1003F53A2CB68A2900F0818D /* Nuke */; };
+		1003F53D2CB68A2900F0818D /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 1003F53C2CB68A2900F0818D /* NukeExtensions */; };
+		1003F53F2CB68A2900F0818D /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1003F53E2CB68A2900F0818D /* NukeUI */; };
+		1003F5412CB68A2900F0818D /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 1003F5402CB68A2900F0818D /* NukeVideo */; };
+		10145F7B2CB684FC001BE2C1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 10145F7A2CB684FC001BE2C1 /* Alamofire */; };
+		10245BAF2CB6F51B002C435A /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 10245BAE2CB6F51B002C435A /* Resolver */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1037ADA52CAD64DD000F3276 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -23,6 +32,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1003F5432CB68AA400F0818D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1037AD8B2CAD64DC000F3276 /* LeetMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeetMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1037ADA42CAD64DD000F3276 /* LeetMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeetMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,31 +55,18 @@
 		1037ADB62CAD64DD000F3276 /* Exceptions for "LeetMobile" folder in "LeetMobile" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"/Localized: LaunchScreen.storyboard",
-				"/Localized: Main.storyboard",
+				"/Localized: Application/LaunchScreen.storyboard",
 				Info.plist,
 			);
 			target = 1037AD8A2CAD64DC000F3276 /* LeetMobile */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		1037ADBA2CAD64DD000F3276 /* Exceptions for "LeetMobile" folder in "Copy Bundle Resources" phase from "LeetMobile" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 1037AD892CAD64DC000F3276 /* Resources */;
-			membershipExceptions = (
-				Base.lproj/LaunchScreen.storyboard,
-				Base.lproj/Main.storyboard,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1037AD8D2CAD64DC000F3276 /* LeetMobile */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				1037ADB62CAD64DD000F3276 /* Exceptions for "LeetMobile" folder in "LeetMobile" target */,
-				1037ADBA2CAD64DD000F3276 /* Exceptions for "LeetMobile" folder in "Copy Bundle Resources" phase from "LeetMobile" target */,
 			);
 			path = LeetMobile;
 			sourceTree = "<group>";
@@ -79,6 +88,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10245BAF2CB6F51B002C435A /* Resolver in Frameworks */,
+				1003F53F2CB68A2900F0818D /* NukeUI in Frameworks */,
+				1003F5412CB68A2900F0818D /* NukeVideo in Frameworks */,
+				1003F53B2CB68A2900F0818D /* Nuke in Frameworks */,
+				1003F53D2CB68A2900F0818D /* NukeExtensions in Frameworks */,
+				10145F7B2CB684FC001BE2C1 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +144,7 @@
 				1037AD872CAD64DC000F3276 /* Sources */,
 				1037AD882CAD64DC000F3276 /* Frameworks */,
 				1037AD892CAD64DC000F3276 /* Resources */,
+				1003F5432CB68AA400F0818D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -139,6 +155,12 @@
 			);
 			name = LeetMobile;
 			packageProductDependencies = (
+				10145F7A2CB684FC001BE2C1 /* Alamofire */,
+				1003F53A2CB68A2900F0818D /* Nuke */,
+				1003F53C2CB68A2900F0818D /* NukeExtensions */,
+				1003F53E2CB68A2900F0818D /* NukeUI */,
+				1003F5402CB68A2900F0818D /* NukeVideo */,
+				10245BAE2CB6F51B002C435A /* Resolver */,
 			);
 			productName = LeetMobile;
 			productReference = 1037AD8B2CAD64DC000F3276 /* LeetMobile.app */;
@@ -222,6 +244,11 @@
 			);
 			mainGroup = 1037AD822CAD64DC000F3276;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				10145F6D2CB683B6001BE2C1 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				1003F5392CB68A2900F0818D /* XCRemoteSwiftPackageReference "Nuke" */,
+				10245BAD2CB6F51B002C435A /* XCRemoteSwiftPackageReference "Resolver" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1037AD8C2CAD64DC000F3276 /* Products */;
 			projectDirPath = "";
@@ -306,11 +333,13 @@
 				DEVELOPMENT_TEAM = 3NRS47XA44;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LeetMobile/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LeetMobile;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -318,6 +347,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = apoorvcodes.LeetMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -334,11 +367,13 @@
 				DEVELOPMENT_TEAM = 3NRS47XA44;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LeetMobile/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LeetMobile;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -346,6 +381,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = apoorvcodes.LeetMobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -411,6 +450,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -467,6 +507,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -583,6 +624,66 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1003F5392CB68A2900F0818D /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.8.0;
+			};
+		};
+		10145F6D2CB683B6001BE2C1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		10245BAD2CB6F51B002C435A /* XCRemoteSwiftPackageReference "Resolver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Resolver.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1003F53A2CB68A2900F0818D /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1003F5392CB68A2900F0818D /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		1003F53C2CB68A2900F0818D /* NukeExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1003F5392CB68A2900F0818D /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeExtensions;
+		};
+		1003F53E2CB68A2900F0818D /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1003F5392CB68A2900F0818D /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
+		1003F5402CB68A2900F0818D /* NukeVideo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1003F5392CB68A2900F0818D /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeVideo;
+		};
+		10145F7A2CB684FC001BE2C1 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10145F6D2CB683B6001BE2C1 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		10245BAE2CB6F51B002C435A /* Resolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10245BAD2CB6F51B002C435A /* XCRemoteSwiftPackageReference "Resolver" */;
+			productName = Resolver;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1037AD832CAD64DC000F3276 /* Project object */;
 }

@@ -1,0 +1,18 @@
+import Foundation
+import SwiftUI
+
+enum APIError: Int, Error {
+	case invalidURL
+    case notConnected
+}
+
+extension APIError: LocalizedError {
+	var descriptionText: LocalizedStringKey {
+		switch self {
+		case .invalidURL:
+            return "Invalid URL"
+        case .notConnected:
+            return "Not Connected"
+        }
+	}
+}
