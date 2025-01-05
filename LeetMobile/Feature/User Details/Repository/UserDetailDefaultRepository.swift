@@ -14,7 +14,7 @@ final class UserDetailDefaultRepository: UserDetailRepositoryProtocol {
         self.remoteRepository = remoteRepository
     }
     
-    func fetchUserDetail(userId: String) -> AnyPublisher<UsersDataModel, Error> {
+    func fetchUserDetail(userId: String) -> AnyPublisher<UserProfileModel, Error> {
         remoteRepository.fetchUserDetail(userId: userId)
     }
 }

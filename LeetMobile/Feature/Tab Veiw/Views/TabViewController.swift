@@ -58,7 +58,7 @@ final class TabViewController: UITabBarController {
     }
     
     private func setupTabs() {
-        let homeViewController = UIViewController(nibName: nil, bundle: nil)
+        let homeViewController = UserDetailsViewController(nibName: nil, bundle: nil)
         homeViewController.tabBarItem = homeTab
         
         let contestViewController = UIViewController(nibName: nil, bundle: nil)

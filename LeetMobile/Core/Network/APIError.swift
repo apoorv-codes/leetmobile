@@ -4,6 +4,7 @@ import SwiftUI
 enum APIError: Int, Error {
 	case invalidURL
     case notConnected
+    case csrfTokenNotFound
 }
 
 extension APIError: LocalizedError {
@@ -13,6 +14,8 @@ extension APIError: LocalizedError {
             return "Invalid URL"
         case .notConnected:
             return "Not Connected"
+        case .csrfTokenNotFound:
+            return "CSRF Token Not Found"
         }
 	}
 }
