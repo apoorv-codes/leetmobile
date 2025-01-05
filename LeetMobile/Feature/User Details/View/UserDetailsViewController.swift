@@ -14,21 +14,21 @@ import Resolver
 
 class UserDetailsViewController: UIViewController {
     protocol Interactor: AnyObject {
-        var userDetailsPublisher: AnyPublisher<UsersDataModel?, Never> { get }
+        var userDetailsPublisher: AnyPublisher<UserProfileModel?, Never> { get }
         var isLoadingPublisher: AnyPublisher<Bool, Never> { get }
         func fetchUserDetails(username: String)
     }
-
+    
     private var viewModel: any Interactor = Resolver.resolve()
     private var subscriptions = Set<AnyCancellable>()
     
-    lazy private var helloWorld: UILabel = {
+    private let helloWorld: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    lazy private var userImage: LazyImageView = {
+    private let userImage: LazyImageView = {
         let imageView = LazyImageView()
         imageView.placeholderView = UIActivityIndicatorView()
         imageView.priority = .high
@@ -37,19 +37,15 @@ class UserDetailsViewController: UIViewController {
         return imageView
     }()
     
-    lazy private var loader: UIActivityIndicatorView = {
+    private let loader: UIActivityIndicatorView = {
         let loader = UIActivityIndicatorView(style: .large)
         loader.translatesAutoresizingMaskIntoConstraints = false
         loader.startAnimating()
         return loader
     }()
     
-    lazy private var vStack: UIStackView = {
-        let vStack = UIStackView(arrangedSubviews: [
-            loader,
-            userImage,
-            helloWorld
-        ])
+    private let vStack: UIStackView = {
+        let vStack = UIStackView()
         vStack.axis = .vertical
         vStack.translatesAutoresizingMaskIntoConstraints = false
         vStack.distribution = .fillProportionally
@@ -59,11 +55,7 @@ class UserDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.fetchUserDetails(username: "anubhav0910")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            self.viewModel.fetchUserDetails(username: "apoorvverma812")
-            
-        }
+        self.viewModel.fetchUserDetails(username: "apoorvverma812")
         self.view.backgroundColor = .systemBackground
         self.view.addSubview(vStack)
         self.setUpConstraints()
@@ -71,6 +63,8 @@ class UserDetailsViewController: UIViewController {
     }
     
     func setUpConstraints() {
+        vStack.addArrangedSubviews(loader, userImage, helloWorld)
+        
         NSLayoutConstraint.activate([
             vStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             vStack.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -78,19 +72,27 @@ class UserDetailsViewController: UIViewController {
     }
     
     func setupBindings() {
-            viewModel.userDetailsPublisher
-                .map { "Hello, \($0?.name ?? "User")" }
-                .assign(to: \.text, on: helloWorld)
-                .store(in: &subscriptions)
-
-            viewModel.userDetailsPublisher
-                .compactMap { URL(string: $0?.avatar ?? "") }
-                .assign(to: \.url, on: userImage)
-                .store(in: &subscriptions)
-
-            viewModel.isLoadingPublisher
-                .map { !$0 }
-                .assign(to: \.isHidden, on: loader)
-                .store(in: &subscriptions)
-        }
+        viewModel.userDetailsPublisher
+            .map { "Hello, \($0?.data?.matchedUser?.profile?.realName ?? "User")" }
+            .assign(to: \.text, on: helloWorld)
+            .store(in: &subscriptions)
+        
+        viewModel.userDetailsPublisher
+            .compactMap { URL(string: $0?.data?.matchedUser?.profile?.userAvatar ?? "") }
+            .assign(to: \.url, on: userImage)
+            .store(in: &subscriptions)
+        
+        viewModel.isLoadingPublisher
+            .map { !$0 }
+            .assign(to: \.isHidden, on: loader)
+            .store(in: &subscriptions)
+        
+        vStack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(refresh)))
+        
+        
+    }
+    
+    @objc func refresh() {
+        viewModel.fetchUserDetails(username: "apoorvverma812")
+    }
 }

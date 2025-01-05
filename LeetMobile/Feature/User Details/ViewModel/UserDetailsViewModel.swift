@@ -6,14 +6,15 @@
 //
 
 import Combine
+import Resolver
 import Foundation
 
 class UserDetailsViewModel: UserDetailsViewController.Interactor {
     let repository: UserDetailRepositoryProtocol
-    @Published private var userDetails: UsersDataModel?
+    @Published private var userDetails: UserProfileModel?
     @Published private var isLoading: Bool
     
-    var userDetailsPublisher: AnyPublisher<UsersDataModel?, Never> {
+    var userDetailsPublisher: AnyPublisher<UserProfileModel?, Never> {
         $userDetails.eraseToAnyPublisher()
     }
     
@@ -31,16 +32,16 @@ class UserDetailsViewModel: UserDetailsViewController.Interactor {
     func fetchUserDetails(username: String) {
         self.isLoading = true
         repository.fetchUserDetail(userId: username)
-            .sink { completion in
+            .sink { [weak self] completion in
                 switch completion {
                 case .finished:
                     break
                 case .failure(let failure):
                     debugPrint("Error: \(failure.localizedDescription)")
                 }
-                self.isLoading = false
-            } receiveValue: { userDetails in
-                self.userDetails = userDetails
+                self?.isLoading = false
+            } receiveValue: { [weak self] userDetails in
+                self?.userDetails = userDetails
             }
             .store(in: &subscriptions)
     }

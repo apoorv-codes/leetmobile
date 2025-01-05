@@ -8,9 +8,9 @@
 import Combine
 
 protocol UserDetailRepositoryProtocol {
-    func fetchUserDetail(userId: String) -> AnyPublisher<UsersDataModel, Error>
+    func fetchUserDetail(userId: String) -> AnyPublisher<UserProfileModel, Error>
 }
 
 protocol UserDetailRemoteRepositoryProtocol {
-    func fetchUserDetail(userId: String) -> AnyPublisher<UsersDataModel, Error>
+    func fetchUserDetail(userId: String) -> AnyPublisher<UserProfileModel, Error>
 }

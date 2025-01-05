@@ -9,7 +9,6 @@ protocol NetworkManagerProtocol {
 }
 
 final class NetworkManager: NetworkManagerProtocol {
-	
 	internal var session: Session
 	
 	private lazy var decoder: JSONDecoder = {
