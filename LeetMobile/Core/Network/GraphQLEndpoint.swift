@@ -36,15 +36,7 @@ extension GraphQLEndpoint {
         [:]
     }
     
-    func asURLRequest() throws -> URLRequest {
-        guard let completeURL = completeURL else {
-            throw APIError.invalidURL
-        }
-        var urlRequest = URLRequest(url: completeURL)
-        urlRequest.httpMethod = httpMethod.rawValue
-        headers?.forEach {
-            urlRequest.addValue($0.value, forHTTPHeaderField: $0.name)
-        }
-        return try JSONEncoding.default.encode(urlRequest, with: parameters)
+    var encodingType: EncodingType {
+        .json
     }
 }
