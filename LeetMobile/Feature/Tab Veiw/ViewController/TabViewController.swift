@@ -15,24 +15,28 @@ final class TabViewController: UITabBarController {
     // MARK: Properties
     private let homeTab: UITabBarItem = {
         let tabItem = UITabBarItem()
+        tabItem.title = "Home"
         tabItem.image = UIImage(systemName: "house")
         tabItem.selectedImage = UIImage(systemName: "house.fill")
         return tabItem
     }()
-    private let contestTab: UITabBarItem = {
+    private let problemsTab: UITabBarItem = {
         let tabItem = UITabBarItem()
+        tabItem.title = "Problems"
         tabItem.image = UIImage(systemName: "apple.terminal")
         tabItem.selectedImage = UIImage(systemName: "apple.terminal.fill")
         return tabItem
     }()
     private let leaderboardTab: UITabBarItem = {
         let tabItem = UITabBarItem()
+        tabItem.title = "Leaderboard"
         tabItem.image = UIImage(systemName: "chart.bar")
         tabItem.selectedImage = UIImage(systemName: "chart.bar.fill")
         return tabItem
     }()
     private let searchTab: UITabBarItem = {
         let tabItem = UITabBarItem()
+        tabItem.title = "Search"
         tabItem.image = UIImage(systemName: "magnifyingglass")
         tabItem.selectedImage = UIImage(systemName: "magnifyingglass.fill")
         return tabItem
@@ -58,11 +62,11 @@ final class TabViewController: UITabBarController {
     }
     
     private func setupTabs() {
-        let homeViewController = UserDetailsViewController(nibName: nil, bundle: nil)
+        let homeViewController = HomeViewController(nibName: nil, bundle: nil)
         homeViewController.tabBarItem = homeTab
         
-        let contestViewController = UIViewController(nibName: nil, bundle: nil)
-        contestViewController.tabBarItem = contestTab
+        let problemsViewController = UIViewController(nibName: nil, bundle: nil)
+        problemsViewController.tabBarItem = problemsTab
         
         let leaderboardViewController = UIViewController(nibName: nil, bundle: nil)
         leaderboardViewController.tabBarItem = leaderboardTab
@@ -70,6 +74,11 @@ final class TabViewController: UITabBarController {
         let searchViewController = UIViewController(nibName: nil, bundle: nil)
         searchViewController.tabBarItem = searchTab
         
-        self.viewControllers = [homeViewController, contestViewController, leaderboardViewController, searchViewController]
+        self.viewControllers = [
+            homeViewController,
+            problemsViewController,
+            leaderboardViewController,
+            searchViewController
+        ]
     }
 }

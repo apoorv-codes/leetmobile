@@ -31,6 +31,11 @@ class UserDetailsViewModel: UserDetailsViewController.Interactor {
 
     func fetchUserDetails(username: String) {
         self.isLoading = true
+        guard let username: String = UserDefaultsHelper.get(forKey: .username) else {
+            self.isLoading = false
+            // TODO: Handle this by logging out user or prompting to insert a username
+            return
+        }
         repository.fetchUserDetail(userId: username)
             .sink { [weak self] completion in
                 switch completion {
