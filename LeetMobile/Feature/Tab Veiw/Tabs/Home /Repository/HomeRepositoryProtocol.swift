@@ -8,9 +8,7 @@
 import Combine
 
 protocol HomeRepositoryProtocol {
-    func fetchHome(userId: String) -> AnyPublisher<UserProfileModel, Error>
 }
 
 protocol HomeRemoteRepositoryProtocol {
-    func fetchHome(userId: String) -> AnyPublisher<UserProfileModel, Error>
 }

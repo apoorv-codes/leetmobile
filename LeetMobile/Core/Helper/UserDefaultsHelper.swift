@@ -8,8 +8,9 @@ import UIKit
 
 final class UserDefaultsHelper {
     enum UserDetailKeys: String {
-        case token = "token"
-        case username = "username"
+        case token
+        case username
+        case defaultPageSize
     }
    
     private init(){}

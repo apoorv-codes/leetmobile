@@ -14,7 +14,4 @@ final class HomeDefaultRepository: HomeRepositoryProtocol {
         self.remoteRepository = remoteRepository
     }
     
-    func fetchHome(userId: String) -> AnyPublisher<UserProfileModel, Error> {
-        remoteRepository.fetchHome(userId: userId)
-    }
 }

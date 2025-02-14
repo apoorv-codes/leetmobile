@@ -5,11 +5,15 @@
 //  Created by Apoorv Verma on 12/17/24.
 //
 import UIKit
+import Combine
 
 final class TabViewController: UITabBarController {
+    let eventsHandler = PassthroughSubject<TabViewCoordinatorEvents, Never>()
+    
     // MARK: Interactor
-    protocol Interactor {
-        
+    protocol Interactor: UITabBarControllerDelegate {
+        var delegate: TabBarViewControllerDelegate? { get set }
+        var tabItems: [UIViewController] { get set }
     }
     
     // MARK: Properties
@@ -42,15 +46,13 @@ final class TabViewController: UITabBarController {
         return tabItem
     }()
     
+    private let viewModel: Interactor
     
-    init() {
+    init(viewModel: any Interactor) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.setupTabs()
+        self.delegate = viewModel
+        
     }
     
     required init?(coder: NSCoder) {
@@ -59,26 +61,37 @@ final class TabViewController: UITabBarController {
     
     override func viewDidLoad() {
         self.setupTabs()
+        
     }
     
     private func setupTabs() {
-        let homeViewController = HomeViewController(nibName: nil, bundle: nil)
+        let homeViewController = HomeViewController()
         homeViewController.tabBarItem = homeTab
         
-        let problemsViewController = UIViewController(nibName: nil, bundle: nil)
+        let problemsViewController = ProblemsViewController(eventsHandler)
         problemsViewController.tabBarItem = problemsTab
         
-        let leaderboardViewController = UIViewController(nibName: nil, bundle: nil)
+        let leaderboardViewController = UIViewController()
         leaderboardViewController.tabBarItem = leaderboardTab
         
-        let searchViewController = UIViewController(nibName: nil, bundle: nil)
+        let searchViewController =  UIViewController()
         searchViewController.tabBarItem = searchTab
         
-        self.viewControllers = [
+        viewModel.tabItems = [
             homeViewController,
             problemsViewController,
             leaderboardViewController,
             searchViewController
         ]
+        viewControllers = viewModel.tabItems
+    }
+}
+
+extension TabViewController: TabBarViewControllerDelegate {
+    func tabDidSwitch(to viewController: UIViewController) {
+//        if let tabItem = viewController.tabBarItem {
+//            navigationItem.title = tabItem.title
+//        }
+        
     }
 }

@@ -13,6 +13,8 @@ extension Resolver: ResolverRegistering {
     public static func registerAllServices() {
         registerCommonServices()
         registerUserDetailServices()
+        registerProblemsServices()
+        registerTabViewServices()
     }
     
     private static func registerCommonServices() {
@@ -45,9 +47,26 @@ extension Resolver: ResolverRegistering {
         .implements(UserDetailRemoteRepositoryProtocol.self)
     }
     
+    private static func registerProblemsServices() {
+        register { _, args in
+            ProblemsViewModel(repository: resolve())
+        }
+        .implements(ProblemsViewController.Interactor.self)
+
+        register {
+            ProblemsDefaultRepository(remoteRepository: resolve())
+        }
+        .implements(ProblemsRepositoryProtocol.self)
+        
+        register {
+            ProblemsRemoteRepository(networkManager: resolve())
+        }
+        .implements(ProblemsRemoteRepositoryProtocol.self)
+    }
+    
     private static func registerTabViewServices() {
         register {
-            TabViewModel()
+            TabViewModel(selectedTab: 0, tabItems: [])
         }
         .implements(TabViewController.Interactor.self)
     }

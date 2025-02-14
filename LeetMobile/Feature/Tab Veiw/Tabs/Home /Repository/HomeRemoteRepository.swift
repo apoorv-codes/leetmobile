@@ -15,8 +15,4 @@ final class HomeRemoteRepository: HomeRemoteRepositoryProtocol {
         self.networkManager = networkManager
     }
     
-    func fetchHome(userId: String) -> AnyPublisher<UserProfileModel, Error> {
-        let requestModel = HomeEndpoints.getHomes(username: userId)
-        return networkManager.executeRequest(requestModel, responseType: UserProfileModel.self)
-    }
 }
