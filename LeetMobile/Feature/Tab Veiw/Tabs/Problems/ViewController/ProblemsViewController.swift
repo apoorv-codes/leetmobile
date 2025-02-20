@@ -38,26 +38,10 @@ class ProblemsViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func applyGradientBackground() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [
-            UIColor.systemBlue.cgColor,
-            UIColor.systemPurple.cgColor
-        ]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-        gradientLayer.frame = view.bounds
-        
-        let backgroundView = UIView(frame: view.bounds)
-        backgroundView.layer.insertSublayer(gradientLayer, at: 0)
-        
-        tableView.backgroundView = backgroundView
-    }
-    
     // MARK: VC State Management
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyGradientBackground()
+        /*applyGradientBackground*/()
         tableView.dataSource = viewmodel
         tableView.delegate = viewmodel
         viewmodel.fetchProblemsList()

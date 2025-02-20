@@ -83,9 +83,15 @@ final class TabViewModel: NSObject, ObservableObject, TabViewController.Interact
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if let tabItem = viewController.tabBarItem {
+        guard let tabItem = viewController.tabBarItem  else { return }
+        if let vc =  viewController as? HomeViewController {
             tabBarController.navigationItem.title = tabItem.title
+        } else if let vc = viewController as? ProblemsViewController {
             
+            tabBarController.navigationItem.title = tabItem.title
+//            tabBarController.navigationItem.searchController = vc.searchController
+        } else {
+            return
         }
     }
 }
