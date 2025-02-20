@@ -1,5 +1,5 @@
 //
-//  UserDetailsEndpoint.swift
+//  UserDetailsEndpoints.swift
 //  LeetMobile
 //
 //  Created by Apoorv Verma on 10/9/24.
@@ -8,11 +8,11 @@
 import Foundation
 import Alamofire
 
-enum UserDetailsEndpoint: GraphQLEndpoint {
+enum UserDetailsEndpoints: GraphQLEndpoint {
     case getUserDetails(username: String)
 }
 
-extension UserDetailsEndpoint {
+extension UserDetailsEndpoints {
     var query: String {
          """
                 query getUserProfile($username: String!) {

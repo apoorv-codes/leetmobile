@@ -16,7 +16,7 @@ final class UserDetailRemoteRepository: UserDetailRemoteRepositoryProtocol {
     }
     
     func fetchUserDetail(userId: String) -> AnyPublisher<UserProfileModel, Error> {
-        let requestModel = UserDetailsEndpoint.getUserDetails(username: userId)
+        let requestModel = UserDetailsEndpoints.getUserDetails(username: userId)
         return networkManager.executeRequest(requestModel, responseType: UserProfileModel.self)
     }
 }
